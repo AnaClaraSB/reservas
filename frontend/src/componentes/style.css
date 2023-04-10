@@ -1,0 +1,51 @@
+.doriana{
+    margin-bottom: 1000;
+    width: 25px;
+    height: 250px;
+    left: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.seila{
+    margin-top: 10;
+    width: 25px;
+    height: 250px;
+}
+.wow{
+    border-radius: 6px;
+    width: 1200px;
+    height: 673px;
+}
+.color{
+    background-color: rgb(238, 245, 244); 
+}
+.cabecalho{
+    border-radius: 10px;    
+}
+.fooder{
+    border-radius: 10px;
+}
+.index{
+    border-radius: 10px;
+    background-color:aliceblue 
+}
+.listarsalas{
+    border-radius: 10px;
+    background-color:aliceblue  
+}
+.listarfuncionarios{
+    border-radius: 10px;
+    background-color:aliceblue  
+}
+.listarclientes{
+    border-radius: 10px;
+    background-color:aliceblue  
+} 
+.resaervas{
+    border-radius: 10px;
+    background-color:aliceblue   
+}
+.reservas{
+    border-radius: 10px;
+    background-color:rgb(113, 117, 121)   
+}
