@@ -16,7 +16,7 @@ import Clientesmod from './paginas/modclientes'
 import Funcinariosmod from './paginas/modfuncionarios'
 import ListarFuncionarios from './paginas/listarfuncionarios';
 import Resaervas from './paginas/reservas';
-import Reservas from './paginas/resaervas';
+import Reservas from './paginas/reservas';
 
 function App() {
   return (
@@ -38,8 +38,8 @@ function App() {
           <Route path="/index" element={<Index/>} />
           <Route path="/funcionarios/:id" element={<Funcinariosmod/>} />
           <Route path="/listarfuncionarios" element={<ListarFuncionarios/>} />
-          <Route path="/reservas" element={<Resaervas/>} />
-          <Route path="/resaervas" element={<Reservas/>} />
+          <Route path="/reservas/" element={<Reservas/>} />
+          <Route path="/reservas/:id" element={<Reservas/>} />
         </Routes>
       </BrowserRouter>    
 

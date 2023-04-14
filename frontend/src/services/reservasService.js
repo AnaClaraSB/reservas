@@ -7,24 +7,24 @@ const api = axios.create({
 
 var reservasService = {
   getReservas: async () => {
-    var rsvsAPI = axios.get('http://localhost:2527/apirsvs/');
-    return await rsvsAPI;
+    var reservasala = axios.get('http://localhost:5000/apirsvs');
+    return await reservasala;
   },
   getOneReservas: async (id) => {
-    var rsvsAPI1 = await axios.get('http://localhost:2527/apirsvs/unica/'+ id);
-    return rsvsAPI1;
+    var reservasala = await axios.get('http://localhost:5000/apirsvs/unica/'+ id);
+    return reservasala;
   },
-  postReservas: async (sala) =>{
-    var sala = await axios.post('http://localhost:2527/apirsvs/', sala);
-    return sala;
+  postReservas: async (reservas) =>{
+    var reservasala = await axios.post('http://localhost:5000/apirsvs', reservas);
+    return reservasala;
   },
-  updtReservas: async (id, sala) =>{
-    var Rsvsupdt = await axios.put('http://localhost:2527/apirsvs/'+ id, sala);
-    return Rsvsupdt;
+  updtReservas: async (id, reservas) =>{
+    var reservasala = await axios.put('http://localhost:5000/apirsvs/'+ id, reservas);
+    return reservasala;
   },
   deltReservas: async (id) =>{
-    var cancrsvs = await axios.put('http://localhost:2527/apirsvs/cancelar/'+ id);
-    return cancrsvs;
+    var cancelarrese = await axios.put('http://localhost:5000/apirsvs/cancelar/'+ id);
+    return cancelarrese;
   }
 };
 

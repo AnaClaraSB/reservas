@@ -1,36 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Form, Button, Dropdown } from 'react-bootstrap';
+import { Container, Row, Form, Button } from 'react-bootstrap';
 import { useParams, useNavigate  } from "react-router-dom";
 import Cabecalho from '../../src/componentes/cabecalho';
 import Footer from '../../src/componentes/footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../componentes/style.css';
-import salasService from '../services/salasService';
+import ComboSalas from '../componentes/combosalas';
 import reservasService from '../services/reservasService';
-
 
 function Reservas() {
   
   const { id } = useParams();
   const [reserva, setFormData] = useState({});
-  
-  const [salaReservas, setSalas] = useState([]);
-  const [valorSalas, setValorSalas] = useState('');
-
   const history = useNavigate();
   
   useEffect(() => {
       async function fetchFormData () {
       
-      try {
-
-        const responseSala = await salasService.getSalas();
-        setSalas(responseSala.data);
-
+      try {        
+        
         const response = await reservasService.getOneReservas(id);
         setFormData(response.data);
-
-
 
       } catch (error) {
         console.error(error);
@@ -44,10 +34,12 @@ function Reservas() {
       event.preventDefault();
       try {
         
-        //const id = event.target._id.value;
+        
         if (event.nativeEvent.submitter.name === "salvar") {
+          alert(id);
+         
 
-          if (typeof id === 'undefined') {
+          if (id === 'inserir') {
               
               await reservasService.postReservas(reserva);
               alert('incluido com sucesso!');
@@ -55,7 +47,7 @@ function Reservas() {
           }
           else {
               
-              await reservasService.updtReservas(id, reserva);
+              await reservasService.updtReservas(id,reserva);
               alert('alterado com sucesso!');
               
           }
@@ -69,7 +61,6 @@ function Reservas() {
     const handleChange = (event) => {
       const { name, value } = event.target;
       setFormData({ ...reserva, [name]: value });
-      setValorSalas(event.target.value);
     };
   
   return (    
@@ -80,37 +71,31 @@ function Reservas() {
       </Row>
      
       <Row className='resaervas'>
-      
-        <Form onSubmit={handleSubmit}>       
-            <Dropdown>
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Selecione uma sala
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                {salaReservas.map((item) => (
-                  <Dropdown.Item key={item._id} href="#">
-                    {item.numero}
-                  </Dropdown.Item>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>            
-            <Form.Label>Data da Reserva':</Form.Label>
-            <Form.Control type="date" name="data" value={reserva.data} onChange={handleChange}/>
-            <Form.Label>Hora Inicio:</Form.Label>
-            <Form.Control type="number" name="inicio" value={reserva.inicio} onChange={handleChange}/>
-            <Form.Label>Hora Fim:</Form.Label>
-            <Form.Control type="number" name="fim" value={reserva.fim} onChange={handleChange}/>
-            <Form.Label>Observacao:</Form.Label>
-            <Form.Control type="text" name="observacao" value={reserva.observacao} onChange={handleChange}/>
-            <Button variant="primary" type="submit" name="salvar">
-              Salvar
-            </Button>
-            <Button variant="primary" type="submit" name="cancelar">
-              Cancelar
-            </Button>
-        </Form>
-      </Row>        
-      
+    
+      <Form onSubmit={handleSubmit}>
+
+        <ComboSalas name="sala" value={reserva.sala} onSelect={handleChange}/>
+        <Form.Label>Numero:</Form.Label>
+        <Form.Control type="text" name="numero" value={reserva.numero} onChange={handleChange}/>
+        <Form.Label>Data:</Form.Label>
+        <Form.Control type="date" name="data" value={reserva.data} onChange={handleChange}/>
+        <Form.Label>Hora inicio:</Form.Label>
+        <Form.Control type="number" name="inicio" value={reserva.inicio} onChange={handleChange}/>
+        <Form.Label>Hora fim:</Form.Label>
+        <Form.Control type="number" name="fim" value={reserva.fim} onChange={handleChange}/>          
+        <Form.Label>Valor:</Form.Label>
+        <Form.Control type="number" name="valor" value={reserva.valor} onChange={handleChange}/>
+        <Form.Label>Observação:</Form.Label>
+        <Form.Control type="text" name="observacao" value={reserva.observacao} onChange={handleChange}/>          
+        
+        <Button variant="primary" type="submit" name="salvar">
+          Salvar
+        </Button>
+        <Button variant="primary" type="submit" name="cancelar">
+          Cancelar
+        </Button>
+      </Form>
+    </Row>        
         <Row>
           <Footer/>
         </Row>    

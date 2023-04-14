@@ -43,7 +43,7 @@ function Carrossel() {
                       <Carousel.Caption>
                       <h3>{item.valor}</h3>
                       <p>{item.descricao}</p>
-                      <Button variant="primary" href='/resaervas'>
+                      <Button variant="primary" href='/reservas/inserir'>
                         Reserve!
                       </Button>
                       </Carousel.Caption>

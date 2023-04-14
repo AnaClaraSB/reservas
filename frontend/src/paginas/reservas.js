@@ -1,108 +1,126 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Container, Row, Col, Card, Button, Table,} from 'react-bootstrap';
-//import Cabecalho from '../componentes/cabecalho';
-import '../componentes/style.css';
-import reservasService from '../services/reservasService';
-import salasService from '../services/salasService';
-import ComboSalas from '../componentes/combosalas';
+import { Container, Row, Form, Button } from 'react-bootstrap';
+import { useParams, useNavigate  } from "react-router-dom";
 import Cabecalho from '../componentes/cabecalho';
-import Footer from '../componentes/footer';
+import Rodape from '../componentes/rodape';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import reservasService from '../services/reservasService';
+import '../componentes/style.css';
+import ComboSalas from '../componentes/combosalas';
 
-function Resaervas() {
+function Reservas() {
   
-  const [tableData, setTableData] = useState([]);
+  const { id } = useParams();
+  const [reserva, setFormData] = useState({});
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const history = useNavigate();
   
   useEffect(() => {
-      async function fetchTableData () {
+      async function fetchFormData () {
       
       try {
-        
-        const response = await reservasService.getReservas();
-        //const response = await axios.get('http://localhost:2527/api/salas');
-        setTableData(response.data);
+
+        alert(id)
+
+        if (id !== 'inserir') {
+        const response = await reservasService.getOneReservas(id);
+        setFormData(response.data);
+        }
+
       } catch (error) {
         console.error(error);
       }
   
       };
-      fetchTableData();
-    },[tableData]); 
+      fetchFormData();
+    },[id]); 
 
-    async function handlecancel(id) {
-      var confirma = window.confirm('Confere?');
-      if(confirma){
-        try{
-            //await axios.delete(`http://localhost:2527/api/deltsalas/${id}`);
-            await salasService.deltSalas(id);
-            alert('reserva cancelada deletado com sucesso!');
-        } catch (error){
-          console.error(error);
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      try {
+        
+        
+        if (event.nativeEvent.submitter.name === "salvar") {
+          alert('teste');
+          reserva.funcionario = 'WEB - Internet';
+          reserva.cliente = 'Internet - WWW';
+          reserva.status = 'R'; // indicar sala reservada
+          reserva.valortotal = 1;
+          if (id === 'inserir') {
+              
+              await reservasService.postReservas(reserva);
+              alert('incluido com sucesso!');
+               
+          }
+          else {
+              
+              await reservasService.updtReservas(id,reserva);
+              alert('alterado com sucesso!');
+              
+          }
         }
+      } catch (error) {
+        console.error(error);
       }
-      }
+      //history(-1);
+    }
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormData({ ...reserva, [name]: value });
+    };    
+
+    const handleSelectChange = (value) => {
+      setSelectedValue(value);      
+      reserva.sala = value;
+    };    
   
   return (    
 
     <Container fluid>
       <Row>
-        <Col xs={12}>
         <Cabecalho />
-        </Col>
       </Row>
      
+      <Row className='listarsalas'>
       
-        <Card>
-          <Card.Body>
-          <Row className='reservas'>
-          <Button variant="success" size='lg' type="submit" href='/assalas'>
-              incluir
-            </Button>
-          <Table responsive striped bordered hover variant="light">
-          <thead>
-            <tr>
-              <th>imgLink</th>
-              <th>Numero</th>
-              <th>Capacidade</th>
-              <th>Descrição</th>
-              <th>Valor</th>
-              <th>Update</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-          {tableData.map((row, index) => {
-              return (
-            <tr key={index} data-toogle="tooltip" title={row.imgsala}>
-                <td>{row.imgsala}</td>
-                <td>{row.numero}</td>
-                <td>{row.capacidade}</td>
-                <td>{row.descricao}</td>
-                <td>{row.valor}</td>
-                <td><a href={`/assalas/${row._id}`}>
-                  </a>
-                </td>
-                <td><a href='#'>
-                  </a>
-                </td>
-            </tr>
-          );
-          })}
-          </tbody>
-           </Table>
-           <Button variant="dark" size='lg' href='/index'>
-              Retornar
-            </Button>
-            </Row>
-           </Card.Body>
-        </Card>
+      
+        <Form onSubmit={handleSubmit}>          
+          
+          <Form.Label>Valor select</Form.Label>
+          <Form.Control name='sala' type="text" value={selectedValue} readOnly />
 
-      <ComboSalas/>
+          <ComboSalas onSelectChange={handleSelectChange} />
+          
+          <Form.Label>Numero:</Form.Label>
+          <Form.Control type="text" name="numero" value={reserva.numero} onChange={handleChange}/>
+          <Form.Label>Data:</Form.Label>
+          <Form.Control type="date" name="data" value={reserva.data} onChange={handleChange}/>
+          <Form.Label>Hora inicio:</Form.Label>
+          <Form.Control type="number" name="inicio" value={reserva.inicio} onChange={handleChange}/>
+          <Form.Label>Hora fim:</Form.Label>
+          <Form.Control type="number" name="fim" value={reserva.fim} onChange={handleChange}/>          
+          <Form.Label>Valor:</Form.Label>
+          <Form.Control type="number" name="valor" value={reserva.valor} onChange={handleChange}/>
+          <Form.Label>Observação:</Form.Label>
+          <Form.Control type="text" name="observacao" value={reserva.observacao} onChange={handleChange}/>          
+          
+          <Button variant="primary" type="submit" name="salvar">
+            Salvar
+          </Button>
+          <Button variant="primary" type="submit" name="cancelar">
+            Cancelar
+          </Button>
+        </Form>
+      </Row>        
       
-      <Footer/>
+        <Row>          
+          <Rodape/>
+        </Row>    
 
     </Container>
   );
 }
 
-export default Resaervas;
+export default Reservas;
