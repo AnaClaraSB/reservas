@@ -15,7 +15,6 @@ import ListarClientes from './paginas/listarclientes';
 import Clientesmod from './paginas/modclientes'
 import Funcinariosmod from './paginas/modfuncionarios'
 import ListarFuncionarios from './paginas/listarfuncionarios';
-import Resaervas from './paginas/reservas';
 import Reservas from './paginas/reservas';
 
 function App() {
