@@ -23,7 +23,7 @@ function Funcionariosmod() {
       try {
         
         console.log('id =' + id);
-        const response = await axios.get(`http://localhost:5000/enctfuncionarios/${id}`);
+        const response = await axios.get(`http://localhost:5000/funcionarios/${id}`);
         setFormData(response.data);      
         console.log('response ' + response.data);
       } catch (error) {

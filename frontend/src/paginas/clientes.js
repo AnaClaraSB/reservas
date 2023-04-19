@@ -16,7 +16,7 @@ function Clientes() {
       async function fetchFormData () {
       
       try {        
-        const response = await axios.get(`http://localhost:5000/enctclientes/${id}`);
+        const response = await axios.get(`http://localhost:5000/clientes/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error(error);

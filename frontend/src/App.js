@@ -13,7 +13,7 @@ import Index from './paginas';
 import ListarSalas from './paginas/listarsalas';
 import ListarClientes from './paginas/listarclientes';
 import Clientesmod from './paginas/modclientes'
-import Funcinariosmod from './paginas/modfuncionarios'
+import Funcionariosmod from './paginas/modfuncionarios'
 import ListarFuncionarios from './paginas/listarfuncionarios';
 import Reservas from './paginas/reservas';
 
@@ -35,7 +35,7 @@ function App() {
           <Route path="/clientes/:id" element={<Clientesmod/>} />
           <Route path="/listarclientes" element={<ListarClientes/>} />
           <Route path="/index" element={<Index/>} />
-          <Route path="/funcionarios/:id" element={<Funcinariosmod/>} />
+          <Route path="/funcionarios/:id" element={<Funcionariosmod/>} />
           <Route path="/listarfuncionarios" element={<ListarFuncionarios/>} />
           <Route path="/reservas/" element={<Reservas/>} />
           <Route path="/reservas/:id" element={<Reservas/>} />

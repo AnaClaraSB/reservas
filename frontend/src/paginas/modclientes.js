@@ -23,7 +23,7 @@ function Clientesmod() {
       try {
         
         console.log('id =' + id);
-        const response = await axios.get(`http://localhost:5000/enctclientes/${id}`);
+        const response = await axios.get(`http://localhost:5000/clientes/${id}`);
         setFormData(response.data);      
         console.log('response ' + response.data);
       } catch (error) {

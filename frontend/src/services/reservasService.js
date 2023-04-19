@@ -7,7 +7,7 @@ var reservasService = {
     return await reservasala;
   },
   getOneReservas: async (id) => {
-    var reservasala = await axios.get('http://localhost:5000/reservas'+ id);
+    var reservasala = await axios.get('http://localhost:5000/reservas/'+ id);
     return reservasala;
   },
   postReservas: async (reservas) =>{

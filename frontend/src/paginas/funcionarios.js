@@ -16,7 +16,7 @@ function Funcionarios() {
       async function fetchFormData () {
       
       try {        
-        const response = await axios.get(`http://localhost:5000/enctfuncionarios/${id}`);
+        const response = await axios.get(`http://localhost:5000/funcionarios/${id}`);
         setFormData(response.data);
       } catch (error) {
         console.error(error);

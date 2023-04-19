@@ -23,7 +23,7 @@ function Salasmod() {
       try {
         
         console.log('id =' + id);
-        const response = await axios.get(`http://localhost:5000/enctsalas/${id}`);
+        const response = await axios.get(`http://localhost:5000/salas/${id}`);
         setFormData(response.data);      
         console.log('response ' + response.data);
       } catch (error) {

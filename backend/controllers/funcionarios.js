@@ -14,7 +14,7 @@ exports.getFuncionarios = async(req, res) => {
 
 exports.getoneFuncionario = async (req, res) => {   
   try {;
-    res.status(201).json(await funcionario.FuncionarioModel.findById(req.params.id));
+    res.status(201).json(await func.funcionariosModel.findById(req.params.id));
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -22,7 +22,7 @@ exports.getoneFuncionario = async (req, res) => {
 
 exports.createFuncionario = async (req, res) => {   
     try {;
-      res.status(201).json(await funcionario.FuncionarioModel.create(req.body));
+      res.status(201).json(await func.funcionariosModel.create(req.body));
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -30,7 +30,7 @@ exports.createFuncionario = async (req, res) => {
 
   exports.updateFuncionario = async (req, res) => {   
     try {;
-      res.status(201).json(await funcionario.FuncionarioModel.findByIdAndUpdate(req.params.id,req.body));
+      res.status(201).json(await func.funcionariosModel.findByIdAndUpdate(req.params.id,req.body));
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -38,7 +38,7 @@ exports.createFuncionario = async (req, res) => {
 
   exports.deleteFuncionario = async (req, res) => {   
     try {;
-      res.status(201).json(await funcionario.FuncionarioModel.findByIdAndDelete(req.params.id));
+      res.status(201).json(await func.funcionariosModel.findByIdAndDelete(req.params.id));
     } catch (error) {
       res.status(400).json({ message: error.message });
     }

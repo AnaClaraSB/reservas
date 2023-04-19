@@ -123,7 +123,7 @@ function ListarFuncionarios() {
       </Row>
         <Row>
         <Rodape/>
-          <Link to="/funcionarios/">
+          <Link to="/funcionarios/:id">
             <Button>
               <Image
                 src="https://cdn-icons-png.flaticon.com/512/4315/4315609.png"

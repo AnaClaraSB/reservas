@@ -9,7 +9,7 @@ router.get('/consulta/', reservaController.consultaSalasReservas);
 // criar a reserva
 router.post('/', reservaController.createReserva);
 //consultar reservas com id
-router.get('/unica/:id', reservaController.getOneReserva);
+router.get('/:id', reservaController.getOneReserva);
 // alterar sala ou periodo da reserva
 router.put('/:id', reservaController.updateReserva);
 // ver disponibilidade de sala e data para reserva

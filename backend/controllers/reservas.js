@@ -74,6 +74,7 @@ exports.getOneReserva = async (req, res) => {
 
 exports.createReserva = async (req, res) => {   
     try {
+      console.log('teste')
       res.status(201).json(await reserva.reservaModel.create(req.body));
     } catch (error) {
       res.status(400).json({ message: error.message });

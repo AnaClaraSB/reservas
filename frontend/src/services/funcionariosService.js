@@ -12,7 +12,7 @@ var funcionariosService = {
     return  response;
   },
   getOneFuncionarios: async (id) => {
-      const response = await axios.get('http://localhost:5000/funcionarios'+ id);
+      const response = await axios.get('http://localhost:5000/funcionarios/'+ id);
       
       return  response;
   },
