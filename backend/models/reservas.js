@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
 
 var reserva = new Schema ({
 
-    numero      : { type:Number ,  required: true },
+    numero      : { type:Number , required: true},
     sala        : { type:String , required: true},
     cliente     : { type:String , required: true},
     funcionario : { type:String , required: true},

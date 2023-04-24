@@ -41,3 +41,11 @@ exports.createCliente = async (req, res) => {
       res.status(400).json({ message: error.message });
     }
   };
+
+  exports.getcpfCliente = async (req, res) => {   
+    try {;
+      res.status(201).json(await cliente.ClienteModel.find({cpf:$(req.params.cpf)}));
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };

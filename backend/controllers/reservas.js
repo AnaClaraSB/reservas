@@ -81,9 +81,9 @@ exports.createReserva = async (req, res) => {
     }
   };
 
-exports.updateReserva = async (req, res) => {   
+exports.updtReserva = async (req, res) => {   
     try {;
-      res.status(201).json(await reserva.reservaModel.findByIdAndUpdate(req.params.id,req.body));
+      res.status(201).json(await reserva.reservaModel.findByIdAndUpdt(req.params.id,req.body));
     } catch (error) {
       res.status(400).json({ message: error.message });
     }

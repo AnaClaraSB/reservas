@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Container, Row, Button, Image, Modal } from 'react-bootstrap';
 import Cabecalho from '../componentes/cabecalho';
 import Footer from '../componentes/footer';

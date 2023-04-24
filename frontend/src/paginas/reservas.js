@@ -66,7 +66,7 @@ function Reservas() {
       } catch (error) {
         console.error(error);
       }
-      //history(-1);
+      history(-1);
     }
 
     const handleChange = (event) => {
@@ -78,7 +78,7 @@ function Reservas() {
       setSelectedValue(value);      
       reserva.sala = value;
     };    
-  
+    
   return (    
 
     <Container fluid>
@@ -116,12 +116,11 @@ function Reservas() {
         </Button>
 
         <Button variant="primary" className='mb-0' type="submit" name="cancelarreservas" readOnly>   
-        <Col sm ={7}>  
+        <Col sm ={6}>  
           Cancelar Reservas
         </Col>  
         </Button>
-    
-        </Form>
+       </Form>
 
     </Row>        
     

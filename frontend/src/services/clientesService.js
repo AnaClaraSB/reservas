@@ -31,6 +31,11 @@ var clientesService = {
 
     return response;
   },
+  getcpfCliente: async (id) => {
+    const response = await axios.get('http://localhost:5000/clientes/cpf/'+ id);
+
+    return response;
+  },
 };
 
 export default clientesService;
