@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Form, Button, Col } from 'react-bootstrap';
+import { Container, Row, Form, Button, Col, Image } from 'react-bootstrap';
 import { useParams, useNavigate  } from "react-router-dom";
 import Cabecalho from '../componentes/cabecalho';
 import Footer from '../componentes/footer';
@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import reservasService from '../services/reservasService';
 import '../componentes/style.css';
 import ComboSalas from '../componentes/combosalas';
+import { Link } from 'react-router-dom';
 
 function Reservas() {
   
@@ -88,10 +89,21 @@ function Reservas() {
    
     <Row className='listarsalas'>
     
-      <Form onSubmit={handleSubmit}>          
-        
-        <Form.Label>Valor select</Form.Label>
-        <Form.Control name='sala' type="text" value={selectedValue} readOnly />
+    <Form className='horadata' onSubmit={handleSubmit}>
+              <Form.Label>Cpf:<Form.Control type="number" name="data" value={reserva.data} onChange={handleChange}/></Form.Label>
+          <Form.Label>nome:<Form.Control type="text" name="inicio" value={reserva.inicio} onChange={handleChange}/></Form.Label>
+          
+              <Link to="/reservasmodal">
+          <button >
+            <Image
+              src="https://cdn-icons-png.flaticon.com/512/6822/6822310.png"
+              alt="Incluir"
+              
+              width="50"
+              height="50"             
+            />
+          </button>
+          </Link>
 
         <ComboSalas onSelectChange={handleSelectChange} />
         

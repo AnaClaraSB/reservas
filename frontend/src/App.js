@@ -16,6 +16,7 @@ import Clientesmod from './paginas/modclientes'
 import Funcionariosmod from './paginas/modfuncionarios'
 import ListarFuncionarios from './paginas/listarfuncionarios';
 import Reservas from './paginas/reservas';
+import Reservasmodal from './paginas/reservasmodal';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/listarfuncionarios" element={<ListarFuncionarios/>} />
           <Route path="/reservas/" element={<Reservas/>} />
           <Route path="/reservas/:id" element={<Reservas/>} />
+          <Route path="/reservasmodal" element={<Reservasmodal/>} />
         </Routes>
       </BrowserRouter>    
 

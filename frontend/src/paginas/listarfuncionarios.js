@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Button, Image, Modal } from 'react-bootstrap';
 import Cabecalho from '../componentes/cabecalho';
-import Rodape from '../componentes/rodape';
+import Footer from '../componentes/footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import '../componentes/style.css';
@@ -122,7 +122,7 @@ function ListarFuncionarios() {
                 </div>
       </Row>
         <Row>
-        <Rodape/>
+        <Footer/>
           <Link to="/funcionarios/:id">
             <Button>
               <Image

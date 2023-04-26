@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const AutoIncrement  = require('mongoose-sequence')(mongoose);
-
 mongoose.connect('mongodb://127.0.0.1:27017/reservas', { useNewUrlParser: true});
 
 var Schema = mongoose.Schema;
